@@ -5,6 +5,15 @@ class Conta {
     private int numero;
     private double saldo;
     private double limite;
+    private static int totalContas;
+
+    Conta(){
+       Conta.totalContas = Conta.totalContas + 1;
+    }
+
+    public static int getTotalContas(){
+        return Conta.totalContas;
+    }
 
 
     public String getTitular(){
@@ -41,7 +50,13 @@ class Conta {
     }
 
     void deposita(double valor){
-        this.saldo = this.saldo + valor;
+        if( valor < 0){
+            System.out.println("Valor não é positivo!");
+        }
+        else{
+            this.saldo = this.saldo + valor;
+        }
+        
     }
     
 }
